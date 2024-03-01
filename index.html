@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESYNC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: rgb(0, 187, 0); 
+            font-family: 'Montserrat', sans-serif; 
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #800080; 
+            position: relative;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #800080, 0 0 20px #800080, 0 0 30px #800080;
+            }
+            to {
+                text-shadow: 0 0 20px #800080, 0 0 50px #800080, 0 0 70px #800080;
+            }
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li button {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #800080; 
+            border: 1px solid #800080;
+            margin: 0 5px;
+            border-radius: 5px;
+            background: none;
+        }
+
+        nav ul li button:hover {
+            background-color: #800080;
+            color: #000;
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #000;
+            color: rgb(0, 54, 0); 
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .button-row {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .button-row button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: 1px solid #800080;
+            border-radius: 5px;
+            background-color: #800080;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .button-row button:hover {
+            background-color: #0f0;
+            color: #000;
+        }
+
+        .video-container {
+            margin-top: 20px;
+            position: relative;
+            padding-bottom: 56.25%;
+            padding-top: 30px;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DESYNC</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><button onclick="changeLanguage('ru')" id="ruBtn">RU</button></li>
+            <li><button onclick="changeLanguage('en')" id="enBtn">EN</button></li>
+        </ul>
+    </nav>
+
+    <section class="main-content">
+        <h2 id="welcome-text"></h2>
+        <p id="content-text"></p>
+        <ul id="additional-text"></ul>
+        <div class="button-row">
+            <button onclick="openLink('https://t.me/raddyd')">Telegram</button>
+            <button onclick="openLink('https://discord.com/channels/817282230858416128/1213226998390853693')">FFDev</button>
+            <button onclick="openLink('https://t.me/desyncportfolio')">Portfolio</button>
+
+            <script>
+            function openLink(url) {
+            window.location.href = url;
+            }
+            </script>
+
+        </div>
+        
+        </section>
+  
+    <script>
+        const languageData = {
+            'ru': {
+                'welcome': 'Добро пожаловать на портфолио пукикакера десинка!!!!!',
+                'content': 'Инфа:'
+            },
+            'en': {
+                'welcome': 'Welcome to desync portfolio!!!!!!',
+                'content': 'Info:'
+            }
+        };
+        function changeLanguage(lang) {
+            const welcomeText = document.getElementById('welcome-text');
+            const contentText = document.getElementById('content-text');
+            const additionalText = document.getElementById('additional-text');
+            welcomeText.textContent = languageData[lang]['welcome'];
+            contentText.textContent = languageData[lang]['content'];
+            additionalText.innerHTML = '';
+            const ruBtn = document.getElementById('ruBtn');
+            const enBtn = document.getElementById('enBtn');
+            if (lang === 'ru') {
+                ruBtn.style.backgroundColor = '#0f0';
+                ruBtn.style.color = '#000';
+                enBtn.style.backgroundColor = '';
+                enBtn.style.color = '';
+            } else if (lang === 'en') {
+                enBtn.style.backgroundColor = '#0f0';
+                enBtn.style.color = '#000';
+                ruBtn.style.backgroundColor = '';
+                ruBtn.style.color = '';
+            }
+        }
+        window.onload = function() {
+            changeLanguage('ru');
+        };
+    </script>
+</body>
+</html>
